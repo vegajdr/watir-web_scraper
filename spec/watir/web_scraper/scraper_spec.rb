@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe WebScraper::Scraper do
+RSpec.describe Watir::WebScraper::Scraper do
   subject(:scraper) { described_class.new(args) }
 
   let(:args) do
@@ -12,24 +12,24 @@ RSpec.describe WebScraper::Scraper do
 
   let(:actions) { [login_class, submit_class, fetch_class, logout_class] }
 
-  let(:browser_class) { class_double(WebScraper::ChromeBrowser) }
-  let(:browser_instance) { instance_double(WebScraper::ChromeBrowser) }
+  let(:browser_class) { class_double(Watir::WebScraper::ChromeBrowser) }
+  let(:browser_instance) { instance_double(Watir::WebScraper::ChromeBrowser) }
 
-  let(:login_class) { class_double(WebScraper::Page::Step::Base) }
-  let(:login_instance) { instance_double(WebScraper::Page::Step::Base) }
+  let(:login_class) { class_double(Watir::WebScraper::Page::Step::Base) }
+  let(:login_instance) { instance_double(Watir::WebScraper::Page::Step::Base) }
 
   let(:submit_class) do
-    class_double(WebScraper::Page::Step::Base)
+    class_double(Watir::WebScraper::Page::Step::Base)
   end
   let(:submit_instance) do
-    instance_double(WebScraper::Page::Step::Base)
+    instance_double(Watir::WebScraper::Page::Step::Base)
   end
 
-  let(:fetch_class) { class_double(WebScraper::Page::Fetcher::Base) }
-  let(:fetch_instance) { instance_double(WebScraper::Page::Fetcher::Base) }
+  let(:fetch_class) { class_double(Watir::WebScraper::Page::Fetcher::Base) }
+  let(:fetch_instance) { instance_double(Watir::WebScraper::Page::Fetcher::Base) }
 
-  let(:logout_class) { class_double(WebScraper::Page::Step::Base) }
-  let(:logout_instance) { instance_double(WebScraper::Page::Step::Base) }
+  let(:logout_class) { class_double(Watir::WebScraper::Page::Step::Base) }
+  let(:logout_instance) { instance_double(Watir::WebScraper::Page::Step::Base) }
 
   let(:params) { {} }
 
@@ -79,7 +79,7 @@ RSpec.describe WebScraper::Scraper do
       end
 
       context 'when error is not retryable' do
-        let(:non_retryable_error) { WebScraper::Scraper::Error }
+        let(:non_retryable_error) { Watir::WebScraper::Scraper::Error }
 
         before { allow(submit_instance).to receive(:start).and_raise(non_retryable_error) }
 
