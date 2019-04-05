@@ -1,7 +1,7 @@
-## WebScraper::Scraper
+## Watir::WebScraper::Scraper
 
 ```ruby
-  scraper = WebScraper::Scraper.new(
+  scraper = Watir::WebScraper::Scraper.new(
     actions: [
       SomePath,
       SomeStep
@@ -12,12 +12,12 @@
   scraper.perform
 ```
 
-The key to WebScraper is to make sure you inherit from the proper class provided:
+The key to Watir::WebScraper is to make sure you inherit from the proper class provided:
 
 ## Path
 
 ```ruby
-class SomePath < WebScraper::Page::Path::Base
+class SomePath < Watir::WebScraper::Page::Path::Base
   STEPS = [
     SomeStep, # See Below
     AnotherStep,
@@ -33,7 +33,7 @@ path.start # alias for path.perform_steps
 ## Step
 
 ```ruby
-class SomeStep < WebScraper::Page::Step::Base
+class SomeStep < Watir::WebScraper::Page::Step::Base
   def instructions
     browser.text_field(id: 'someId').set('foobar')
   end
@@ -46,7 +46,7 @@ step.start
 ## Fetcher
 
 ```ruby
-class SomeFetcher < WebScraper::Page::Fetcher::Base
+class SomeFetcher < Watir::WebScraper::Page::Fetcher::Base
   def fetch
     ...
     @fetched_data = fetched_data.merge(data: data)

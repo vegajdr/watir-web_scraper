@@ -2,11 +2,11 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'web_scraper/version'
+require 'watir/web_scraper/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'web_scraper'
-  spec.version       = WebScraper::VERSION
+  spec.name          = 'watir-web_scraper'
+  spec.version       = Watir::WebScraper::VERSION
   spec.authors       = ['vegajdr']
   spec.email         = ['vegajdr@users.noreply.github.com']
 
@@ -34,11 +34,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport', '~> 5.0.0'
+  spec.add_dependency 'activesupport', '~> 5.2.2.1'
   spec.add_dependency 'watir', '~> 6.16'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'pry', '~> 0.12.2'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'pry', '~> 0.12.2'
 end
