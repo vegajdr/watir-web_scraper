@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
-require 'watir/web_scraper/firefox_browser'
-require 'watir/web_scraper/retryable'
-require 'active_support/core_ext/object/blank'
-require 'active_support/core_ext/time/zones'
-# require 'active_support/core_ext/array/wrap'
-
-# Time.zone ||= 'Eastern Time (US & Canada)'
-
 module Watir
   module WebScraper
+    # This object is responsible of executing the routine of a collection of actions that
+    # represent the client navigating through the browser
     class Scraper
       Error = Class.new(StandardError)
 
@@ -18,12 +12,11 @@ module Watir
       attr_reader :errors, :attempts, :actions
 
       def initialize(args)
-        @browser_class = args[:browser] || FirefoxBrowser
+        @browser_class = args[:browser] || Browser::Firefox
         @params = args[:params] || {}
         @max_attempts = args[:max_attempts] || DEFAULT_MAX_ATTEMPTS
         @actions = Array.wrap(args[:actions])
-        @actions = [args[:actions]].flatten
-        @fetcher = Page::Fetcher::Null.new
+        @fetcher = Fetcher::Null.new
         @errors = []
         @attempts = 0
       end
@@ -84,8 +77,8 @@ module Watir
       def retryable_exceptions
         [Watir::Exception::Error,
          Watir::Wait::TimeoutError,
-         Selenium::WebDriver::Error::WebDriverError]
-         # ::Net::ReadTimeout]
+         Selenium::WebDriver::Error::WebDriverError,
+         ::Net::ReadTimeout]
       end
 
       def non_retryable_exceptions
@@ -94,7 +87,6 @@ module Watir
 
       def add_errors
         proc do |error|
-          # errors << { message: error.message, time: ::Time.zone.now }
           errors << { message: error.message, time: ::Time.now }
         end
       end

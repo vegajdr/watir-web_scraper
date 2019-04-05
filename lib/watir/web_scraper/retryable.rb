@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'active_support/core_ext/array/wrap'
-
 module Watir
   module WebScraper
+    # Provides functionality to retry a block of code a given an amount of times based
+    # on allowed retryable exceptions
     module Retryable
       def retry_on_error(options = {})
         options = default_options.merge(options)
