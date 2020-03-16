@@ -58,3 +58,16 @@ class SomeFetcher < Watir::WebScraper::Fetcher
   end
 end
 ```
+
+## Browser
+
+Two browsers are provided:
+
+- Watir::WebScraper::Chrome
+- Watir::WebScraper::Firefox
+
+You may pass an options hash that will be passed down to the Watir::Browser object for custom settings, eg:
+
+```ruby
+  Watir::WebScraper::Chrome.new(options: { options: { detach: true }})
+```
