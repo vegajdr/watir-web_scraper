@@ -4,8 +4,8 @@ module Watir
   module WebScraper
     module Browser
       class Chrome < Watir::Browser
-        def initialize(browser = :chrome)
-          super(browser)
+        def initialize(options = {})
+          super(:chrome, options)
         end
       end
     end

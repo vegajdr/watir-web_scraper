@@ -13,6 +13,7 @@ module Watir
 
       def initialize(args)
         @browser_class = args[:browser] || Browser::Firefox
+        @browser_options = args[:browser_options] || {}
         @params = args[:params] || {}
         @max_attempts = args[:max_attempts] || DEFAULT_MAX_ATTEMPTS
         @actions = Array.wrap(args[:actions])
@@ -45,6 +46,7 @@ module Watir
 
       attr_reader :browser,
                   :browser_class,
+                  :browser_options,
                   :fetcher,
                   :max_attempts,
                   :params
@@ -96,7 +98,7 @@ module Watir
       end
 
       def ensure_browser
-        @browser = browser_class.new unless browser&.exists?
+        @browser = browser_class.new(browser_options) unless browser&.exists?
       end
     end
   end

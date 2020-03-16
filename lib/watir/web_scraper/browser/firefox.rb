@@ -4,8 +4,8 @@ module Watir
   module WebScraper
     module Browser
       class Firefox < Watir::Browser
-        def initialize(browser = :firefox)
-          super(browser)
+        def initialize(options = {})
+          super(:firefox, options)
         end
       end
     end
