@@ -7,9 +7,9 @@ module Watir
     class Fetcher
       attr_reader :fetched_data
 
-      def initialize(browser, options = {})
+      def initialize(browser, params = {})
         @browser = browser
-        @options = options
+        @params = params
         @fetched_data = {}
       end
 
@@ -23,10 +23,10 @@ module Watir
       private
 
       def fetch
-        raise NotImplementedError
+        raise NotImplementedError, 'implement a #fetch method your subclass which returns a data hash'
       end
 
-      attr_reader :browser
+      attr_reader :browser, :params
 
       class Null
         def fetched_data
