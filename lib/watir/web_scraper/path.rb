@@ -4,9 +4,10 @@ module Watir
   module WebScraper
     # This class allows the organization of steps to be performed in sequence
     class Path
-      def initialize(browser, params)
+      def initialize(browser, params, fetched_data)
         @browser = browser
         @params = params
+        @fetched_data = fetched_data
       end
 
       def call
@@ -21,11 +22,11 @@ module Watir
 
       private
 
-      attr_reader :browser, :params
+      attr_reader :browser, :params, :fetched_data
 
       def perform_steps
         self.class::STEPS.each do |step|
-          step.new(browser, params).start
+          step.new(browser, params, fetched_data).start
         end
       end
     end

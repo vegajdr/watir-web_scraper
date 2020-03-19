@@ -72,7 +72,7 @@ module Watir
       end
 
       def action_instances
-        @action_instances ||= actions.map { |action| action.new(browser, params) }
+        @action_instances ||= actions.map { |action| action.new(browser, params, fetched_data) }
       end
 
       def collect_fetchers

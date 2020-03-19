@@ -7,10 +7,10 @@ module Watir
     class Fetcher
       attr_reader :fetched_data
 
-      def initialize(browser, params = {})
+      def initialize(browser, params, fetched_data)
         @browser = browser
         @params = params
-        @fetched_data = {}
+        @fetched_data = fetched_data
       end
 
       def call
