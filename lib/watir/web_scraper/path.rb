@@ -13,6 +13,10 @@ module Watir
         perform_steps
       end
 
+      def fetcher?
+        false
+      end
+
       alias start call
 
       private
