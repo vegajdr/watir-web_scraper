@@ -1,5 +1,13 @@
 # Change log
 
+## Unreleased
+
+### Changes
+
+* [#13](https://github.com/CustomComm/watir-web_scraper/pull/13): Renames Fetcher#options to Fetcher#params
+
+### Bugfixes
+
 ## 0.2.0 (2020-03-16)
 
 ### Changes
