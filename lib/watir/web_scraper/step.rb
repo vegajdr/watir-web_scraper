@@ -13,6 +13,10 @@ module Watir
         instructions
       end
 
+      def fetcher?
+        false
+      end
+
       alias start call
 
       private

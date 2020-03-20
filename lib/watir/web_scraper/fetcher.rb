@@ -20,23 +20,17 @@ module Watir
 
       alias start call
 
-      private
-
       def fetch
         raise NotImplementedError, 'implement a #fetch method your subclass which returns a data hash'
       end
 
-      attr_reader :browser, :params
-
-      class Null
-        def fetched_data
-          {}
-        end
-
-        def fetch; end
-
-        alias start fetch
+      def fetcher?
+        true
       end
+
+      private
+
+      attr_reader :browser, :params
     end
   end
 end

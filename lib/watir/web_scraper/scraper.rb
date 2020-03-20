@@ -17,7 +17,7 @@ module Watir
         @params = args[:params] || {}
         @max_attempts = args[:max_attempts] || DEFAULT_MAX_ATTEMPTS
         @actions = Array.wrap(args[:actions])
-        @fetcher = Fetcher::Null.new
+        @fetcher_collection = Fetcher::Collection.new
         @errors = []
         @attempts = 0
       end
@@ -39,7 +39,7 @@ module Watir
       end
 
       def fetched_data
-        fetcher.fetched_data
+        fetcher_collection.fetched_data
       end
 
       private
@@ -49,7 +49,8 @@ module Watir
                   :browser_options,
                   :fetcher,
                   :max_attempts,
-                  :params
+                  :params,
+                  :fetcher_collection
 
       def retry_options
         {
@@ -64,12 +65,18 @@ module Watir
         @attempts += 1
         ensure_browser
 
-        actions.each do |action|
-          instance = action.new(browser, params).start
-          @fetcher = instance if instance.respond_to?(:fetch)
-        end
+        collect_fetchers
+        action_instances.each(&:start)
 
         true
+      end
+
+      def action_instances
+        @action_instances ||= actions.map { |action| action.new(browser, params) }
+      end
+
+      def collect_fetchers
+        fetcher_collection.push(*action_instances.select(&:fetcher?))
       end
 
       def default_exceptions
