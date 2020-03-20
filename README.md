@@ -1,3 +1,5 @@
+![](https://github.com/CustomComm/watir-web_scraper/workflows/ruby/badge.svg)
+
 ## Watir::WebScraper::Scraper
 
 ```ruby
