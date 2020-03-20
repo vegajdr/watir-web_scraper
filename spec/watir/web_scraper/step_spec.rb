@@ -14,7 +14,7 @@ RSpec.describe Watir::WebScraper::Step do
 
     it { expect { call }.to raise_error(NotImplementedError) }
 
-    context 'when #fetch is implemented in subclass' do
+    context 'when #instructions is implemented in subclass' do
       let(:step) { TestStep.new(browser, params, fetched_data) }
 
       before do
