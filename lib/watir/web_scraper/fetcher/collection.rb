@@ -7,7 +7,7 @@ module Watir
     class Fetcher
       class Collection
         extend Forwardable
-        def_delegators :fetchers, :push
+        def_delegators :fetchers, :<<
 
         def initialize(fetchers = [])
           @fetchers = fetchers

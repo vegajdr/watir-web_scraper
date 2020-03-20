@@ -6,6 +6,7 @@
 
 * [#13](https://github.com/CustomComm/watir-web_scraper/pull/13): Renames Fetcher#options to Fetcher#params
 * [#14](https://github.com/CustomComm/watir-web_scraper/pull/14): Support for multiple fetcher actions
+* [#15](https://github.com/CustomComm/watir-web_scraper/pull/15): Allows #fetched_data to be accessible across actions
 
 ### Bugfixes
 

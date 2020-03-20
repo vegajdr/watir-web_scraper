@@ -65,18 +65,18 @@ module Watir
         @attempts += 1
         ensure_browser
 
-        collect_fetchers
-        action_instances.each(&:start)
+        start_actions
 
         true
       end
 
-      def action_instances
-        @action_instances ||= actions.map { |action| action.new(browser, params) }
-      end
+      def start_actions
+        actions.each do |action|
+          instance = action.new(browser, params, fetched_data)
+          fetcher_collection << instance if instance.fetcher?
 
-      def collect_fetchers
-        fetcher_collection.push(*action_instances.select(&:fetcher?))
+          instance.start
+        end
       end
 
       def default_exceptions
