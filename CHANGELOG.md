@@ -1,5 +1,13 @@
 # Change log
 
+## 0.3.1 (2020-04-29)
+
+### Changes
+
+### Bugfixes
+
+* [#20](https://github.com/CustomComm/watir-web_scraper/pull/20): [Security] Bump activesupport from 5.2.3 to 6.0.3.1
+
 ## 0.3.0 (2020-03-20)
 
 ### Changes
